@@ -1,14 +1,19 @@
-import React from "react";
+import setIsTimerRunning from "./Pomodoro"
+import setSession from "./Pomodoro"
+import focusDuration from "./Pomodoro"
 
-function playPause({setIsTimerRunning, setSession, focusDuration}) {
+  
+  /**
+   * Called whenever the play/pause button is clicked.
+   */
+   function playPause() {
     setIsTimerRunning((prevState) => {
       const nextState = !prevState;
-f (nextState) {
+      if (nextState) {
         setSession((prevStateSession) => {
           // If the timer is starting and the previous session is null,
           // start a focusing session.
           if (prevStateSession === null) {
-
             return {
               label: "Focusing",
               timeRemaining: focusDuration * 60, //{secondsToDuration(breakDuration * 60)}
@@ -21,4 +26,4 @@ f (nextState) {
     });
   }
 
-export default PlayButton;
+export default playPause;
